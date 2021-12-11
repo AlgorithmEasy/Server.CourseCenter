@@ -73,6 +73,7 @@ namespace AlgorithmEasy.Server.CourseCenter
             services.AddDbContext<AlgorithmEasyDbContext>(options => options.UseMySql(connection!, version));
 
             services.AddScoped<LearningHistoryManageService>();
+            services.AddScoped<CourseManageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
