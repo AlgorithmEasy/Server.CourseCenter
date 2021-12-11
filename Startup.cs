@@ -1,8 +1,10 @@
 using System;
 using System.Text;
+using AlgorithmEasy.Shared.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -64,6 +66,10 @@ namespace AlgorithmEasy.Server.CourseCenter
                                 Environment.GetEnvironmentVariable("ALGORITHMEASY_SECURITY_TOKENS_KEY")!))
                     };
                 });
+
+            var connection = Environment.GetEnvironmentVariable("ALGORITHMEASY_DB_CONNECTION_STRING");
+            var version = ServerVersion.AutoDetect(connection);
+            services.AddDbContext<AlgorithmEasyDbContext>(options => options.UseMySql(connection!, version));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
