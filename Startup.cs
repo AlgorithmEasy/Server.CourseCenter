@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using AlgorithmEasy.Server.CourseCenter.Services;
 using AlgorithmEasy.Shared.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -70,6 +71,8 @@ namespace AlgorithmEasy.Server.CourseCenter
             var connection = Environment.GetEnvironmentVariable("ALGORITHMEASY_DB_CONNECTION_STRING");
             var version = ServerVersion.AutoDetect(connection);
             services.AddDbContext<AlgorithmEasyDbContext>(options => options.UseMySql(connection!, version));
+
+            services.AddScoped<LearningHistoryManageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
