@@ -6,6 +6,9 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <AssemblyName>AlgorithmEasy.Server.CourseCenter</AssemblyName>
     <RootNamespace>AlgorithmEasy.Server.CourseCenter</RootNamespace>
+    <Authors>WzyAndHisFriends</Authors>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/AlgorithmEasy/Server.CourseCenter</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
