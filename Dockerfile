@@ -11,7 +11,6 @@ COPY ["Server.CourseCenter.csproj", "."]
 RUN --mount=type=secret,id=package_token \
     TOKEN=`cat /run/secrets/package_token` && \
     dotnet nuget add source --username AlgorithmEasy --password $TOKEN --store-password-in-clear-text --name github "https://nuget.pkg.github.com/AlgorithmEasy/index.json"
-RUN dotnet restore "Server.CourseCenter.csproj"
 COPY . .
 RUN dotnet build "Server.CourseCenter.csproj" -c Release -o /app/build
 
@@ -21,4 +20,4 @@ RUN dotnet publish "Server.CourseCenter.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Server.CourseCenter.dll"]
+ENTRYPOINT ["dotnet", "AlgorithmEasy.Server.CourseCenter.dll"]
